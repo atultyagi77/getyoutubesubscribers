@@ -6,6 +6,17 @@ const app = express();
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.send(`
+      <h1>Welcome to the Subscriber API</h1>
+      <ul>
+        <li><a href="https://getyoutubesubscribers-8qtz.onrender.com/subscribers">To get all subscribers</a></li>
+        <li><a href="https://getyoutubesubscribers-8qtz.onrender.com/subscribers/names">To get subscriber's names and subscribed channels</a></li>
+        <li> <a href="https://getyoutubesubscribers-8qtz.onrender.com/subscribers/6678ee5fd6958b7f27221cf4"> To get subscriber by ID</a></li>
+      </ul>
+    `);
+  });
+
 // Route to get all subscribers
 app.get('/subscribers', async (req, res) => {
   try {
