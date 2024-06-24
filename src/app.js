@@ -1,7 +1,7 @@
-import express from 'express';
-import mongoose from 'mongoose';
-
+const express = require('express');
+const mongoose = require('mongoose');
 const Subscriber = require('./models/subscribers');
+
 const app = express();
 
 app.use(express.json());
