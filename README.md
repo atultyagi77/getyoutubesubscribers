@@ -13,38 +13,34 @@ Prerequisites
 Node.js
 npm
 MongoDB Atlas account
-Installation
+
 Clone the repository:
 
-sh
-Copy code
 git clone https://github.com/atultyagi77/getyoutubesubscribers
+
 cd getyoutubesubscribers
+
 Install dependencies:
 
-sh
-Copy code
 npm install
+
 Set up MongoDB Atlas URL:
 
 Create a .env file in the root directory of the project and add the following line:
 
-sh
-Copy code
+
 MONGODB_URL=mongodb+srv://<username>:<password>@cluster0.mongodb.net/myFirstDatabase
 Replace <username> and <password> with your MongoDB Atlas credentials.
 
 Database Initialization
 Initialize the database by running:
 
-sh
-Copy code
+
 node src/createDatabase.js
 Starting the Server
 Start the server with:
 
-sh
-Copy code
+
 node src/index.js
 The server will start on the port specified in your configuration (default is 3000).
 
