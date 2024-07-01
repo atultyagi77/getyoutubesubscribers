@@ -3,9 +3,13 @@ This Node.js application manages subscribers stored in a MongoDB Atlas database.
 
 Features
 Retrieve all subscribers: Get a list of all subscribers.
+
 Retrieve subscribers' names and channels: Get a list of subscribers with only their names and subscribed channels.
+
 Retrieve a subscriber by ID: Get details of a specific subscriber using their ID.
+
 Delete a subscriber by ID: Remove a subscriber from the database using their ID.
+
 Getting Started
 Follow these instructions to set up and run the project on your local machine.
 
