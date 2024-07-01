@@ -13,9 +13,9 @@ Delete a subscriber by ID: Remove a subscriber from the database using their ID.
 Getting Started
 Follow these instructions to set up and run the project on your local machine.
 
-Prerequisites
-Node.js
-npm
+Prerequisites:
+Node.js,
+npm,
 MongoDB Atlas account
 
 Clone the repository:
@@ -77,7 +77,8 @@ Contributions are welcome! Please submit a pull request or open an issue to disc
 License
 This project is licensed under the MIT License.
 
-Acknowledgments
-MongoDB Atlas
-Node.js
+Acknowledgments:
+
+MongoDB Atlas,
+Node.js,
 Express.js
