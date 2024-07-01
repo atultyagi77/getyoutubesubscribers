@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Youtube Subscriber</title>
+    <style>
+        body {
+            background: #f4f4f9;
+            color: #333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #1a73e8;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        div {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        div>ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        div>ul>li {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .route {
+            color: #d13636;
+            font-size: 1.1em;
+        }
+
+        a.route {
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: bold;
+        }
+
+        a.route:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #1a73e8;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #155a9f;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hi, I'm Atul Kumar. Welcome to my getyoutubesubscriber app</h1>
+    <p>Here you can get an array list of YouTube subscribers, get their names, and also find a user by inserting their
+        ID.</p>
+    <div>
+        <h2>Below there are some routes, you can try and get a response:</h2>
+        <ul>
+            <!-- route for all subscribers -->
+            <li>GET <a href="/subscribers" class="route">/subscribers</a>: Here you get a response with an array of
+                subscribers (an Object)</li>
+            <!-- route for get their names and subscribed channel name -->
+            <li>GET <a href="/subscribers/names" class="route">/subscribers/names</a>: Here you get a response with an
+                array of subscribers (an Object with only two fields: name and subscribedChannel)</li>
+            <!-- route for get subscriber by ID -->
+            <li>
+                GET <span class="route">/subscribers/:id</span>: Enter an ID to get a subscriber:
+                <form id="subscriberForm">
+                    <input type="text" id="subscriberId" placeholder="Enter subscriber ID">
+                    <button type="submit">Get Subscriber</button>
+                </form>
+            </li>
+            <li>
+                DELETE <span class="route">/subscribers/:id</span>: Enter an ID to delete a subscriber:
+                <form id="deleteSubscriberForm">
+                    <input type="text" id="deleteSubscriberId" placeholder="Enter subscriber ID">
+                    <button type="submit">Delete Subscriber</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // get subscriber by ID and clear input box after submit
+        document.getElementById('subscriberForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const subscriberId = document.getElementById('subscriberId').value;
+            window.location.href = `/subscribers/${subscriberId}`;
+            document.getElementById('subscriberId').value = '';
+        });
+
+        //delete subscriber by ID
+        document.getElementById('deleteSubscriberForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const subscriberId = document.getElementById('deleteSubscriberId').value;
+
+            try {
+                const response = await fetch(`/subscribers/${subscriberId}`, {
+                    method: 'DELETE',
+                });
+
+                if (response.ok) {
+                    alert('Subscriber deleted successfully');
+                } else {
+                    const errorData = await response.json();
+                    alert(`Error: ${errorData.message}`);
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+            document.getElementById('deleteSubscriberId').value = '';
+        });
+    </script>
+</body>
+
+</html>
